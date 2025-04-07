@@ -67,7 +67,7 @@ function DashboardContent() {
 
   useEffect(() => {
     fetchAttendanceHistory();
-  }, [user]);
+  }, [user, fetchAttendanceHistory]);
 
   // No need to check for user here as StudentRoute handles that
 

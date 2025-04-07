@@ -173,7 +173,7 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
   // Fetch sessions on component mount
   useEffect(() => {
     fetchSessions();
-  }, []);
+  }, [fetchSessions]);
 
   // Fetch attendance data when sessionId changes
   useEffect(() => {
@@ -184,13 +184,11 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
     if (!sessionId) {
       setSession(null);
     }
-  }, [sessionId]);
+  }, [sessionId, fetchData, setSession]);
 
   // Initial data fetch - only runs once on component mount
-  useEffect(() => {
-    // Initial data fetch will be handled by the sessionId effect
-    // This is intentionally left empty to avoid duplicate fetches
-  }, []);
+  // Initial data fetch is handled by the sessionId effect above
+  // No need for an additional empty useEffect
 
   const exportToCSV = () => {
     if (!attendanceData.length) return;
