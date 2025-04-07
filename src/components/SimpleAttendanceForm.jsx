@@ -207,10 +207,10 @@ export default function SimpleAttendanceForm() {
   // If camera is shown, show camera component
   if (showCamera) {
     return (
-      <Card className="w-full max-w-md mx-auto card-hover animate-fade-in shadow-sm">
-        <CardHeader className="responsive-p border-b bg-muted/30">
+      <Card className="w-full max-w-md mx-auto animate-fade-in shadow-sm overflow-hidden">
+        <CardHeader className="border-b bg-muted/10 pb-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center gap-2">
               <div className="p-2 rounded-full bg-primary/10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +242,6 @@ export default function SimpleAttendanceForm() {
               variant="outline"
               size="sm"
               onClick={() => setShowCamera(false)}
-              className="border-primary/20 hover:bg-primary/5 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,33 +258,33 @@ export default function SimpleAttendanceForm() {
                 <path d="M19 12H5"></path>
                 <path d="M12 19l-7-7 7-7"></path>
               </svg>
-              Back to Manual
+              Back
             </Button>
           </div>
-          <CardDescription className="flex items-center mt-2 text-sm max-w-[280px]">
+        </CardHeader>
+
+        <div className="px-4 py-2 bg-secondary/30 border-b">
+          <div className="flex items-center gap-2 text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="mr-1 flex-shrink-0 text-muted-foreground"
+              className="text-primary"
             >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 16v-4"></path>
-              <path d="M12 8h.01"></path>
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
             </svg>
-            <span className="inline-block">
-              Point your camera at the QR code displayed by your instructor
-            </span>
-          </CardDescription>
-        </CardHeader>
+            <span>Point your camera at the QR code</span>
+          </div>
+        </div>
 
-        <CardContent className="responsive-p">
+        <CardContent className="p-0">
           <div className="animate-fade-in">
             <QrScanner onScanSuccess={handleScan} />
           </div>
