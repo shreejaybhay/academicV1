@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useCallback, Fragment } from "react";
 import {
   Table,
   TableBody,
@@ -43,7 +43,7 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
   }, [propSessionId]);
 
   // Define fetchData function
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsLoading(true);
 
     try {
@@ -134,10 +134,10 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [sessionId, toast]);
 
   // Fetch available sessions
-  const fetchSessions = async () => {
+  const fetchSessions = useCallback(async () => {
     setLoadingSessions(true);
     try {
       const res = await fetch("/api/sessions");
@@ -168,7 +168,7 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
     } finally {
       setLoadingSessions(false);
     }
-  };
+  }, [sessionId, toast]);
 
   // Fetch sessions on component mount
   useEffect(() => {
@@ -184,7 +184,7 @@ export default function AttendanceTable({ sessionId: propSessionId }) {
     if (!sessionId) {
       setSession(null);
     }
-  }, [sessionId, fetchData, setSession]);
+  }, [sessionId, fetchData]);
 
   // Initial data fetch - only runs once on component mount
   // Initial data fetch is handled by the sessionId effect above

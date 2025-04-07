@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -19,7 +19,7 @@ function DashboardContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("scan");
 
-  const fetchAttendanceHistory = async () => {
+  const fetchAttendanceHistory = useCallback(async () => {
     if (!user) return;
 
     setIsLoading(true);
@@ -63,11 +63,13 @@ function DashboardContent() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user, toast]);
 
   useEffect(() => {
-    fetchAttendanceHistory();
-  }, [user, fetchAttendanceHistory]);
+    if (user) {
+      fetchAttendanceHistory();
+    }
+  }, [fetchAttendanceHistory]);
 
   // No need to check for user here as StudentRoute handles that
 
