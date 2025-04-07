@@ -10,7 +10,7 @@ import { Loader2, QrCode, History, RefreshCw, Calendar } from 'lucide-react';
 import StudentRoute from '@/components/StudentRoute';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import SimpleAttendanceMarker from '@/components/SimpleAttendanceMarker';
+import SimpleAttendanceForm from '@/components/SimpleAttendanceForm';
 
 function DashboardContent() {
   const { user } = useAuth();
@@ -170,7 +170,7 @@ function DashboardContent() {
               </CardDescription>
             </CardHeader>
             <CardContent className="px-4 sm:px-6 py-4 sm:py-6">
-              <SimpleAttendanceMarker />
+              <SimpleAttendanceForm />
             </CardContent>
           </Card>
         )}
