@@ -55,9 +55,7 @@ module.exports = {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			animation: {
-				'scanline': 'scanline 2s ease-in-out infinite',
-			}
+			/* No custom animations needed */
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

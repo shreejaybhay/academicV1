@@ -86,17 +86,7 @@
     }
   }
 
-  @keyframes scanline {
-    0% {
-      top: 0;
-    }
-    50% {
-      top: 100%;
-    }
-    100% {
-      top: 0;
-    }
-  }
+  /* No scanline animation needed */
 
   /* Keep the animation utilities but remove custom UI elements */
 }

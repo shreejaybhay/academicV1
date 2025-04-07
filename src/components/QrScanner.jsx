@@ -91,29 +91,9 @@ export default function QrScanner({ onScanSuccess }) {
 
   return (
     <div className="qr-scanner-container">
-      <div className="relative mb-4 rounded-lg overflow-hidden border border-primary/10 bg-black/5">
-        {/* Camera frame overlay */}
-        <div className="absolute inset-0 z-10 pointer-events-none">
-          <div className="h-full w-full flex items-center justify-center">
-            <div className="relative w-[280px] h-[280px] max-w-[80vw] max-h-[80vw]">
-              {/* Scanner animation */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-primary/70 animate-scanline"></div>
-
-              {/* Corner markers */}
-              <div className="absolute top-0 left-0 w-[30px] h-[30px] border-t-2 border-l-2 border-primary"></div>
-              <div className="absolute top-0 right-0 w-[30px] h-[30px] border-t-2 border-r-2 border-primary"></div>
-              <div className="absolute bottom-0 left-0 w-[30px] h-[30px] border-b-2 border-l-2 border-primary"></div>
-              <div className="absolute bottom-0 right-0 w-[30px] h-[30px] border-b-2 border-r-2 border-primary"></div>
-            </div>
-          </div>
-        </div>
-
+      <div className="rounded-lg overflow-hidden border border-primary/10 bg-black/5">
         {/* Actual scanner */}
         <div id="reader" className="w-full"></div>
-      </div>
-
-      <div className="text-center text-sm text-muted-foreground">
-        <p>Position the QR code within the frame</p>
       </div>
 
       <style jsx>{`
@@ -127,45 +107,131 @@ export default function QrScanner({ onScanSuccess }) {
           box-shadow: none !important;
           background: transparent !important;
         }
+        /* Dashboard section - camera controls */
         #reader__dashboard_section_csr {
-          margin-bottom: 8px !important;
+          margin: 12px 0 !important;
+          padding: 8px !important;
+          background-color: hsl(var(--secondary)) !important;
+          border-radius: 0.5rem !important;
+          display: flex !important;
+          flex-wrap: wrap !important;
+          justify-content: center !important;
+          gap: 8px !important;
         }
+        /* Camera selection button */
         #reader__dashboard_section_csr button {
           background-color: hsl(var(--primary)) !important;
           color: hsl(var(--primary-foreground)) !important;
           border: none !important;
-          border-radius: 0.25rem !important;
+          border-radius: 0.375rem !important;
           padding: 0.5rem 1rem !important;
           cursor: pointer !important;
           font-family: inherit !important;
           font-size: 14px !important;
+          font-weight: 500 !important;
+          transition: all 0.2s ease !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          line-height: 1 !important;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
         }
+        #reader__dashboard_section_csr button:hover {
+          background-color: hsl(var(--primary) / 0.9) !important;
+        }
+        /* Camera selection text */
         #reader__dashboard_section_csr span {
           font-family: inherit !important;
           font-size: 14px !important;
+          margin: 0 8px !important;
+          color: hsl(var(--foreground)) !important;
         }
+        /* Camera swap link */
         #reader__dashboard_section_swaplink {
           color: hsl(var(--primary)) !important;
           font-family: inherit !important;
           font-size: 14px !important;
-        }
-        #reader__scan_region {
+          text-decoration: none !important;
+          padding: 0.5rem 1rem !important;
+          border-radius: 0.375rem !important;
           background-color: transparent !important;
+          border: 1px solid hsl(var(--primary) / 0.2) !important;
+          transition: all 0.2s ease !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          font-weight: 500 !important;
         }
-        #reader__scan_region img {
+        #reader__dashboard_section_swaplink:hover {
+          background-color: hsl(var(--primary) / 0.1) !important;
+        }
+        /* Torch button */
+        #reader__torch_button {
+          background-color: transparent !important;
+          color: hsl(var(--primary)) !important;
+          border: 1px solid hsl(var(--primary) / 0.2) !important;
+          border-radius: 0.375rem !important;
+          padding: 0.5rem 1rem !important;
+          cursor: pointer !important;
+          font-family: inherit !important;
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          transition: all 0.2s ease !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          margin: 8px !important;
+        }
+        #reader__torch_button:hover {
+          background-color: hsl(var(--primary) / 0.1) !important;
+        }
+        /* File selection section */
+        #reader__filescan_input {
           display: none !important;
         }
+        #reader__filescan_input_label {
+          background-color: transparent !important;
+          color: hsl(var(--primary)) !important;
+          border: 1px solid hsl(var(--primary) / 0.2) !important;
+          border-radius: 0.375rem !important;
+          padding: 0.5rem 1rem !important;
+          cursor: pointer !important;
+          font-family: inherit !important;
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          transition: all 0.2s ease !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          margin: 8px !important;
+        }
+        #reader__filescan_input_label:hover {
+          background-color: hsl(var(--primary) / 0.1) !important;
+        }
+        /* Status message */
         #reader__status_span {
           background-color: transparent !important;
           color: hsl(var(--foreground)) !important;
           border: none !important;
           font-family: inherit !important;
           font-size: 14px !important;
+          padding: 8px !important;
+          text-align: center !important;
+          display: block !important;
+          margin-top: 8px !important;
         }
+        /* Scan region */
+        #reader__scan_region {
+          background-color: transparent !important;
+        }
+        #reader__scan_region img {
+          display: none !important;
+        }
+        /* Video element */
         video {
           object-fit: cover !important;
+          border-radius: 0.375rem !important;
         }
-        /* Animation is now in globals.css */
       `}</style>
     </div>
   );

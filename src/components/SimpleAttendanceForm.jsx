@@ -263,7 +263,7 @@ export default function SimpleAttendanceForm() {
           </div>
         </CardHeader>
 
-        <div className="px-4 py-2 bg-secondary/30 border-b">
+        <div className="px-4 py-3 bg-secondary/30 border-b">
           <div className="flex items-center gap-2 text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -281,6 +281,10 @@ export default function SimpleAttendanceForm() {
               <circle cx="12" cy="13" r="4"></circle>
             </svg>
             <span>Point your camera at the QR code</span>
+          </div>
+          <div className="mt-2 text-xs text-muted-foreground">
+            Use the camera controls below to switch cameras or turn on the
+            flashlight if needed
           </div>
         </div>
 
