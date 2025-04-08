@@ -18,13 +18,13 @@ This is a digital attendance system that replaces traditional paper-based attend
 - **React**: A JavaScript library for building user interfaces
 - **Tailwind CSS**: A utility-first CSS framework for quickly styling the application
 - **shadcn/ui**: A collection of reusable UI components
-- **HTML5 QR Scanner**: A library for scanning QR codes using the device camera
+- **HTML5 QR Scanner**: A library for scanning QR codes using the device camera.
 
 ### Backend (The server-side logic)
 - **Next.js API Routes**: Handles requests from the frontend
 - **MongoDB**: A database to store information about users, sessions, and attendance
 - **Mongoose**: Makes it easier to work with MongoDB
-- **JWT (JSON Web Tokens)**: For secure user authentication
+- **JWT (JSON Web Tokens)**: For secure user authentication.
 
 ### Development Tools
 - **npm**: Package manager for installing and managing libraries
