@@ -12,7 +12,7 @@ A modern attendance tracking system built with Next.js, MongoDB, and JWT authent
 - **Admin Dashboard**: Create sessions, view attendance records, and manage students
 - **Student Dashboard**: View attendance history and scan QR codes
 - **Notification System**: Real-time notifications for students when new sessions are created
-- **Responsive Design**: Works on both desktop and mobile devices
+- **Responsive Design**: Works on both desktop and mobile devices.
 
 ## Tech Stack
 
@@ -20,7 +20,7 @@ A modern attendance tracking system built with Next.js, MongoDB, and JWT authent
 - **Backend**: Next.js API Routes
 - **Database**: MongoDB with Mongoose
 - **Authentication**: JWT (jsonwebtoken) + bcryptjs
-- **QR Code**: qrcode.react for generation, html5-qrcode for scanning
+- **QR Code**: qrcode.react for generation, html5-qrcode for scanning.
 
 ## Getting Started
 
